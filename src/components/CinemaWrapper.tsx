@@ -69,11 +69,18 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
                 top: isMobile ? "auto" : 0,
                 zIndex: isMobile ? "auto" : zIndex,
                 overflow: isMobile ? "visible" : "hidden",
+                marginTop: isMobile && zIndex > 1 ? 12 : 0,
+                marginLeft: isMobile ? 10 : 0,
+                marginRight: isMobile ? 10 : 0,
                 background: "#08000f",
-                borderTopLeftRadius: !isMobile && zIndex > 1 ? 24 : 0,
-                borderTopRightRadius: !isMobile && zIndex > 1 ? 24 : 0,
+                borderTopLeftRadius: isMobile ? 18 : zIndex > 1 ? 24 : 0,
+                borderTopRightRadius: isMobile ? 18 : zIndex > 1 ? 24 : 0,
+                borderBottomLeftRadius: isMobile ? 18 : 0,
+                borderBottomRightRadius: isMobile ? 18 : 0,
                 boxShadow:
-                    !isMobile && zIndex > 1
+                    isMobile
+                        ? "0 8px 28px 0 rgba(0,0,0,0.24), inset 0 1px 0 0 rgba(255,255,255,0.03)"
+                        : zIndex > 1
                         ? "0 -12px 48px 0 rgba(0,0,0,0.7), inset 0 1px 0 0 rgba(255,255,255,0.05)"
                         : "none",
             }}

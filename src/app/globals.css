@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #08000f;
+  --color-foreground: #f0f0f0;
+  --color-deep-purple: #1a0533;
+  --color-electric-blue: #3b82f6;
+  --color-accent-glow: #6366f1;
+  --color-purple-light: #a855f7;
+  --font-sans: 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #08000f;
+  color: #f0f0f0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── CINEMATIC SCROLL ─── */
+/* Handled by CinemaWrapper.tsx — this class is no longer used for layout */
+/* Kept for reference only */
+
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08000f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* ─── GLASS CARD ─── */
+.glass-card {
+  background: rgba(18, 4, 35, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  border-radius: 16px;
+}
+
+.glass-card-hover {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 32px rgba(99, 102, 241, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ─── GRADIENT TEXT ─── */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #60a5fa 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── GLOW TEXT ─── */
+.glow-text {
+  filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.45));
+}
+
+/* ─── NAVBAR BLUR ─── */
+.navbar-blur {
+  background: rgba(8, 0, 15, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+/* ─── NAV LINK HOVER UNDERLINE ─── */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ─── SCROLL OFFSET FOR FIXED NAVBAR ─── */
+[id] {
+  scroll-margin-top: 72px;
+}
+
+/* ─── FORM FOCUS STATES ─── */
+input:focus,
+textarea:focus {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* ─── TIMELINE LINE ─── */
+.timeline-line {
+  background: linear-gradient(180deg, #6366f1 0%, #3b82f6 40%, #a855f7 80%, transparent 100%);
+}
+
+/* ─── SKILL BADGE ─── */
+.skill-badge {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  cursor: default;
+}
+
+.skill-badge:hover {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ─── TYPEWRITER ─── */
+.Typewriter__cursor {
+  color: #818cf8 !important;
+  font-weight: 300;
+}
+
+/* ─── CENTERING UTILITY (ensures containers don't break) ─── */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}

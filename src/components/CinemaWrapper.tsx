@@ -22,25 +22,43 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
         return () => media.removeEventListener("change", onChange);
     }, []);
 
-    // Track how far we've scrolled through THIS section
-    // 0 = section top at viewport top, 1 = section bottom at viewport top
+    // Track how far we've scrolled through this section.
+    // 0 = section top at viewport top, 1 = section bottom at viewport top.
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end start"],
     });
 
-    // Slightly scale down as we exit
+    // Slightly scale down as the section exits.
     const scale = useTransform(
         scrollYProgress,
-        [0, 0.6, 1],
-        [1, 1, isLast ? 1 : 0.92]
+        [0, 0.55, 1],
+        [1, 1, isLast ? 1 : 0.965]
     );
 
-    // Dark overlay fades in from 55% onwards → "lights going out" cinematic vanish
+    const contentOpacity = useTransform(
+        scrollYProgress,
+        [0, 0.55, 0.9, 1],
+        [1, 1, isLast ? 1 : 0.5, isLast ? 1 : 0.25]
+    );
+
+    const translateY = useTransform(
+        scrollYProgress,
+        [0, 0.55, 1],
+        [0, 0, isLast ? 0 : -28]
+    );
+
+    const blur = useTransform(
+        scrollYProgress,
+        [0, 0.55, 1],
+        [0, 0, isLast ? 0 : 10]
+    );
+
+    // Dark overlay fades in from 55% onwards for a smoother cinematic fade.
     const overlayOpacity = useTransform(
         scrollYProgress,
-        [0.5, 0.88],
-        [0, isLast ? 0 : 1]
+        [0.52, 0.9],
+        [0, isLast ? 0 : 0.72]
     );
 
     return (
@@ -60,12 +78,20 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
                         : "none",
             }}
         >
-            {/* Scale the content slightly as this section exits */}
-            <motion.div style={{ scale: isMobile ? 1 : scale, transformOrigin: "top center" }}>
+            <motion.div
+                style={{
+                    scale: isMobile ? 1 : scale,
+                    opacity: isMobile ? 1 : contentOpacity,
+                    y: isMobile ? 0 : translateY,
+                    filter: isMobile ? "blur(0px)" : blur,
+                    transformOrigin: "top center",
+                    willChange: "transform, opacity, filter",
+                }}
+            >
                 {children}
             </motion.div>
 
-            {/* Dark vignette overlay — fades in to swallow the section cinematically */}
+            {/* Dark vignette overlay fades in to smooth the handoff to the next section. */}
             {!isLast && !isMobile && (
                 <motion.div
                     aria-hidden

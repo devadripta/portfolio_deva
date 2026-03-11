@@ -8,7 +8,7 @@ const volunteeringData = [
     {
         role: "General Secretary",
         org: "TESA (E&TC Student's Association), PVGCOET",
-        duration: "Aug 2023 – Aug 2024",
+        duration: "Aug 2023 - Aug 2024",
         Icon: Users,
         highlights: [
             "Led flagship TECHCRAFT national tech event (20+ yr legacy)",
@@ -20,10 +20,10 @@ const volunteeringData = [
     {
         role: "Co-founder & Networking Head",
         org: "CodePVG",
-        duration: "Jan 2022 – Apr 2025",
+        duration: "Jan 2022 - Apr 2025",
         Icon: Mic,
         highlights: [
-            "Produced podcasts with IIT Bombay alumni & Goldman Sachs NY VP",
+            "Produced podcasts with IIT Bombay alumni, Goldman Sachs NY VP, and author of CS books",
             "Hosted sessions on Python, Tinkercad, LinkedIn",
             "Built campus peer learning ecosystem for 1000+ students",
         ],
@@ -32,7 +32,7 @@ const volunteeringData = [
     {
         role: "Event Organizer",
         org: "Google Developer Student Clubs (GDSC)",
-        duration: "Aug 2022 – Aug 2023",
+        duration: "Aug 2022 - Aug 2023",
         Icon: Calendar,
         highlights: [
             "Organized React/GitHub workshops",

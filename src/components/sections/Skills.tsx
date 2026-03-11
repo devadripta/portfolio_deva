@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
 import {
@@ -44,6 +45,16 @@ const skillCategories = [
 ];
 
 export default function Skills() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia("(max-width: 767px)");
+        const onChange = () => setIsMobile(media.matches);
+        onChange();
+        media.addEventListener("change", onChange);
+        return () => media.removeEventListener("change", onChange);
+    }, []);
+
     return (
         <section id="skills" className="relative py-28 bg-[#0b0018]" style={{ minHeight: "100vh" }}>
             <div
@@ -71,15 +82,21 @@ export default function Skills() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                         className="glass-card"
-                        style={{ padding: "2rem" }}
+                        style={{ padding: isMobile ? "1rem" : "2rem", overflow: "visible" }}
                     >
                         <h3 style={{ fontWeight: 600, fontSize: "1rem", color: "white", textAlign: "center", marginBottom: "1rem" }}>
                             Core Competencies
                         </h3>
-                        <ResponsiveContainer width="100%" height={320}>
-                            <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="75%">
+                        <ResponsiveContainer width="100%" height={isMobile ? 280 : 320}>
+                            <RadarChart
+                                data={radarData}
+                                cx="50%"
+                                cy={isMobile ? "53%" : "50%"}
+                                outerRadius={isMobile ? "64%" : "75%"}
+                                margin={isMobile ? { top: 20, right: 28, bottom: 20, left: 20 } : { top: 10, right: 10, bottom: 10, left: 10 }}
+                            >
                                 <PolarGrid stroke="rgba(99,102,241,0.15)" strokeDasharray="3 3" />
-                                <PolarAngleAxis dataKey="subject" tick={{ fill: "#a5b4fc", fontSize: 11 }} />
+                                <PolarAngleAxis dataKey="subject" tick={{ fill: "#a5b4fc", fontSize: isMobile ? 9 : 11 }} />
                                 <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                                 <Radar name="Skills" dataKey="A" stroke="#6366f1" fill="#6366f1" fillOpacity={0.2} strokeWidth={2} />
                             </RadarChart>

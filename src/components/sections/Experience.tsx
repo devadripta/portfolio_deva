@@ -7,48 +7,49 @@ import { Briefcase, MapPin, Calendar } from "lucide-react";
 const experiences = [
     {
         role: "Research Fellow",
-        org: "BITS Pilani, Goa Campus",
-        duration: "Dec 2025 – Present",
+        org: "BITS Pilani, K K Birla Goa Campus",
+        duration: "December 2025 - Present",
         location: "Goa, India",
         bullets: [
-            "Industry-sponsored ML project for end-to-end automotive lifecycle & safety systems.",
-            "Building and evaluating ML pipelines on large-scale real-world data.",
+            "Working on an industry-sponsored ML project for end-to-end automotive lifecycle and safety systems.",
+            "Developing and evaluating ML models and pipelines for real-world, large-scale data.",
         ],
         gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
         dotColor: "#6366f1",
     },
     {
         role: "Research Intern",
-        org: "IISER Kolkata",
-        duration: "Mar 2023 – Jan 2025",
+        org: "Indian Institute of Education Science and Research (IISER), Kolkata",
+        duration: "March 2023 - January 2025",
         location: "Kolkata, India",
         bullets: [
-            "Built SportsOpi — 43K-comment stance detection dataset (LLaMA-3.1 + human verify, κ > 0.8).",
-            "Fine-tuned LLaMA-3.1-8B & DeepSeek-8B, lifting F1 from ~0.35 to ~0.75.",
+            "Developed SportsOpi, a 43K-comment dataset on six major sports controversies, using LLaMA-3.1's multi-phase annotation and human verification (κ > 0.8) for reliable 4-way stance labels.",
+            "Fine-tuned LLaMA-3.1-8b and DeepSeek-8b, raising stance-detection F1 from ~0.35 to ~0.75 and performed attention-based probing to interpret model gains.",
         ],
         gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
         dotColor: "#3b82f6",
     },
     {
         role: "Research Intern",
-        org: "DIAT-DRDO, Pune",
-        duration: "Dec 2023 – Mar 2024",
+        org: "Defence Institute of Advanced Technology, Defence Research and Development Organisation (DIAT, DRDO)",
+        duration: "December 2023 - March 2024",
         location: "Pune, India",
         bullets: [
-            "Novel EEG classification for upper-limb movement — 97.50% micro-averaged accuracy.",
-            "Time-domain & band-power features via KNN, SVM, ensemble methods in Python & MATLAB.",
+            "Developed a novel EEG signal classification method for upper limb movement tasks, achieving 97.50% micro-averaged accuracy and 99.17% mean accuracy, outperforming recent approaches.",
+            "Extracted and evaluated time-domain statistical and band-power features from pre-processed EEG signals using multiple machine learning classifiers, including KNN, SVM, and an ensemble classifier, improving motor imagery task classification accuracy by 10% with MATLAB and Python.",
         ],
         gradient: "linear-gradient(135deg, #a855f7, #ec4899)",
         dotColor: "#a855f7",
     },
     {
         role: "Project Intern",
-        org: "IIT Bombay",
-        duration: "Oct 2023 – Mar 2024",
-        location: "Mumbai, India",
+        org: "Indian Institute of Technology (IIT), Bombay",
+        duration: "October 2023 - March 2024",
+        location: "Bombay, India",
         bullets: [
-            "Brain Tumour Detection: CNN (95% test acc.) + fine-tuned ResNet-50 (99.5% train acc.).",
-            "Comprehensive comparative analysis of both deep learning architectures on MRI data.",
+            "Project Title: Brain Tumor Detection. Implemented a Convolutional Neural Network (CNN) for Brain Tumor Detection which achieved a robust testing accuracy of 95%, demonstrating superior generalization ability in identifying brain tumors from MRI images.",
+            "Utilized a pre-trained ResNet-50 model for brain tumor detection that achieved a high training accuracy of 99.50%.",
+            "Conducted a comprehensive comparative analysis between CNN and ResNet-50 models.",
         ],
         gradient: "linear-gradient(135deg, #ec4899, #f43f5e)",
         dotColor: "#ec4899",
@@ -76,7 +77,7 @@ export default function Experience() {
                     subtitle="Research and engineering roles at premier institutions"
                 />
 
-                {/* 2×2 compact card grid */}
+                {/* 2x2 compact card grid */}
                 <div
                     className="grid grid-cols-1 md:grid-cols-2 gap-4"
                     style={{ maxWidth: 900, margin: "0 auto" }}

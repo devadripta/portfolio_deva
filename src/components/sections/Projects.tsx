@@ -7,55 +7,65 @@ import { X, Github } from "lucide-react";
 
 const projects = [
     {
-        title: "AI-Powered Cost-Effective Spirometer",
-        tags: ["TensorFlow", "Flutter", "CNN+LSTM", "MobileNetV2", "Healthcare AI"],
-        badge: "🇯🇵 ICASI 2025, Tokyo",
+        title: "SportsOpi Dataset & Stance Detection",
+        tags: ["LLaMA-3.1", "DeepSeek-8b", "NLP", "Dataset"],
+        badge: "Research Intern @ IISER Kolkata",
         description:
-            "Presented at International Conference on Applied System Innovation (ICASI) 2025, Tokyo. Developed a portable spirometer for asthma/COPD diagnosis. Orchestrated dual-model AI architecture: 1D CNN+LSTM for high-fidelity time-series analysis and MobileNetV2 for flow-volume imaging.",
-        highlights: ["93.73% Acc (CNN+LSTM)", "92.7% Acc (Image)"],
+            "Created a 43K-comment dataset on sports controversies with multi-phase LLaMA-3.1 annotation. Fine-tuned LLaMA-3.1-8b and DeepSeek-8b, boosting stance detection F1 from ~0.35 to ~0.75. Achieved inter-annotator agreement κ > 0.8.",
+        details: [
+            "Created 43K-comment dataset on sports controversies with multi-phase LLaMA-3.1 annotation",
+            "Fine-tuned LLaMA-3.1-8b and DeepSeek-8b, boosting stance detection F1 from ~0.35 to ~0.75",
+            "Achieved inter-annotator agreement κ > 0.8",
+        ],
+        highlights: ["43K Comments", "F1: ~0.75"],
+        gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
+        dotColor: "#3b82f6",
+    },
+    {
+        title: "EEG Signal Classification",
+        tags: ["EEG", "MATLAB", "Python", "SVM"],
+        badge: "Research Intern @ DIAT, DRDO",
+        description:
+            "Developed a novel classification method for upper limb movement tasks. Achieved 97.50% micro-averaged accuracy and 99.17% mean accuracy. Outperformed existing approaches by 10% using ensemble ML classifiers.",
+        details: [
+            "Novel classification method for upper limb movement tasks",
+            "Achieved 97.50% micro-averaged accuracy and 99.17% mean accuracy",
+            "Outperformed existing approaches by 10% using ensemble ML classifiers",
+        ],
+        highlights: ["97.50% Micro Avg", "99.17% Mean"],
+        gradient: "linear-gradient(135deg, #a855f7, #ec4899)",
+        dotColor: "#a855f7",
+    },
+    {
+        title: "AI-Powered Spirometer",
+        tags: ["TensorFlow", "Flutter", "CNN+LSTM", "MobileNetV2", "Healthcare AI"],
+        badge: "Final Year Project - ICASI 2025, Tokyo",
+        description:
+            "Built a cost-effective portable spirometer for respiratory diagnostics. Used dual AI models: 1D CNN+LSTM with 93.73% accuracy and MobileNetV2 with 92.7% accuracy. Added a Flutter app with real-time FVC, FEV1, and PEF measurement.",
+        details: [
+            "Cost-effective portable spirometer for respiratory diagnostics",
+            "Dual AI models: 1D CNN+LSTM (93.73% accuracy) + MobileNetV2 (92.7% accuracy)",
+            "Flutter app with real-time FVC, FEV1, PEF measurement",
+        ],
+        highlights: ["93.73% Accuracy", "92.7% Accuracy"],
         link: "https://ieeexplore.ieee.org/abstract/document/11148564",
         gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
         dotColor: "#6366f1",
     },
     {
-        title: "SportsOpi — Stance Detection & LLM Fine-tuning",
-        tags: ["LLaMA-3.1", "DeepSeek", "NLP", "Hugging Face"],
-        badge: "IISER Kolkata",
-        description:
-            "Engineered a large-scale stance detection dataset (43K comments) on sports controversies. Fine-tuned LLaMA-3.1-8B and DeepSeek-8B models, achieving a significant performance leap (F1 score up from 0.35 to 0.75). Implemented attention-probing for model interpretability.",
-        highlights: ["43K Dataset", "F1 Score: 0.75"],
-        gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-        dotColor: "#3b82f6",
-    },
-    {
-        title: "EEG Classification for Motor Imagery (DRDO)",
-        tags: ["EEG", "MATLAB", "Python", "SVM"],
-        badge: null,
-        description:
-            "Novel method for upper-limb movement classification achieving 97.50% micro-averaged accuracy — outperforming recent approaches.",
-        highlights: ["97.50% Accuracy"],
-        gradient: "linear-gradient(135deg, #a855f7, #ec4899)",
-        dotColor: "#a855f7",
-    },
-    {
-        title: "Brain Tumour Detection (IIT Bombay)",
+        title: "Brain Tumor Detection",
         tags: ["CNN", "ResNet-50", "MRI", "TensorFlow"],
-        badge: null,
+        badge: "Project Intern @ IIT Bombay",
         description:
-            "CNN (95% test acc.) + fine-tuned ResNet-50 (99.5% train acc.) on MRI images. Full comparative architecture study.",
-        highlights: ["95% Test Acc.", "99.5% Train Acc."],
+            "Implemented a CNN for brain tumor detection with 95% testing accuracy on MRI images. Fine-tuned ResNet-50 to 99.50% training accuracy. Conducted a comparative analysis of deep learning architectures.",
+        details: [
+            "CNN implementation with 95% testing accuracy on MRI images",
+            "ResNet-50 fine-tuning achieving 99.50% training accuracy",
+            "Comparative analysis of deep learning architectures",
+        ],
+        highlights: ["95% Test Acc.", "99.50% Train Acc."],
         gradient: "linear-gradient(135deg, #ec4899, #f43f5e)",
         dotColor: "#ec4899",
-    },
-    {
-        title: "EMG-Based Robotics Claw (Prosthetics)",
-        tags: ["EMG", "Robotics", "Biomedical", "Embedded"],
-        badge: "🏆 2nd Rank in Department",
-        description:
-            "EMG-controlled prosthetic claw — secured 2nd rank in department in pre-final year B.E. project.",
-        highlights: ["2nd Rank"],
-        gradient: "linear-gradient(135deg, #f59e0b, #f97316)",
-        dotColor: "#f59e0b",
     },
 ];
 
@@ -74,7 +84,7 @@ export default function Projects() {
             <div className="section-container relative">
                 <SectionHeading title="Projects" subtitle="Research work and engineering projects that push boundaries" />
 
-                {/* Card Grid — explicit 3-col */}
+                {/* Card Grid - explicit 3-col */}
                 <div
                     style={{
                         display: "grid",
@@ -267,6 +277,15 @@ export default function Projects() {
                             <p style={{ color: "#d1d5db", lineHeight: 1.7, marginBottom: "1.25rem" }}>
                                 {projects[selected].description}
                             </p>
+
+                            <ul style={{ listStyle: "none", paddingLeft: 0, marginBottom: "1.25rem" }}>
+                                {projects[selected].details.map((detail, i) => (
+                                    <li key={i} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.45rem" }}>
+                                        <span style={{ color: projects[selected].dotColor, marginTop: 2, flexShrink: 0 }}>•</span>
+                                        <span style={{ color: "#d1d5db", fontSize: "0.9rem", lineHeight: 1.6 }}>{detail}</span>
+                                    </li>
+                                ))}
+                            </ul>
 
                             <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
                                 {projects[selected].tags.map((t, i) => (

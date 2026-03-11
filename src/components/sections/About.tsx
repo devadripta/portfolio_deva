@@ -21,7 +21,7 @@ export default function About() {
                     subtitle="A researcher who turns complex problems into elegant AI solutions."
                 />
 
-                {/* Two-column layout — stacks on mobile, side-by-side on lg */}
+                {/* Two-column layout - stacks on mobile, side-by-side on lg */}
                 <div className="flex flex-col lg:grid lg:grid-cols-[auto_1fr] gap-12 items-center mb-20">
                     {/* Profile Monogram */}
                     <motion.div
@@ -56,12 +56,14 @@ export default function About() {
                         transition={{ duration: 0.6 }}
                     >
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
-                            I&apos;m an applied machine learning researcher currently pursuing my{" "}
+                            I&apos;m a PhD candidate in Computer Science at BITS Pilani, Goa, specializing in deep learning for NLP and computer vision.
+                        </p>
+                        <p className="text-gray-300 text-lg leading-relaxed mb-5">
+                            I&apos;m currently a Research Fellow at{" "}
                             <span className="text-indigo-400 font-semibold">
-                                PhD in Computer Science at BITS Pilani, K K Birla Goa Campus
+                                BITS Pilani, K K Birla Goa Campus
                             </span>
-                            , where I&apos;m a Research Fellow working on industry-sponsored ML systems for
-                            automotive lifecycle and safety.
+                            , where I work on industry-sponsored ML systems for automotive lifecycle and safety.
                         </p>
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
                             My work spans{" "}

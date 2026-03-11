@@ -45,7 +45,7 @@ export default function Education() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 350px), 1fr))",
                         gap: "1.5rem",
                         maxWidth: 900,
                         margin: "0 auto",

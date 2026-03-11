@@ -177,3 +177,14 @@ textarea:focus {
     padding-right: 48px;
   }
 }
+
+@media (max-width: 767px) {
+  section[id] {
+    min-height: 100svh !important;
+  }
+
+  .section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

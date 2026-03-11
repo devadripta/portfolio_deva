@@ -59,7 +59,7 @@ export default function Skills() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 350px), 1fr))",
                         gap: "3rem",
                         alignItems: "start",
                     }}

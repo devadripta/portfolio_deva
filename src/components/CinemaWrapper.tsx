@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface CinemaWrapperProps {
@@ -12,6 +12,15 @@ interface CinemaWrapperProps {
 
 export default function CinemaWrapper({ children, zIndex, isLast = false }: CinemaWrapperProps) {
     const ref = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const media = window.matchMedia("(max-width: 767px)");
+        const onChange = () => setIsMobile(media.matches);
+        onChange();
+        media.addEventListener("change", onChange);
+        return () => media.removeEventListener("change", onChange);
+    }, []);
 
     // Track how far we've scrolled through THIS section
     // 0 = section top at viewport top, 1 = section bottom at viewport top
@@ -38,26 +47,26 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
         <div
             ref={ref}
             style={{
-                position: "sticky",
-                top: 0,
-                zIndex,
-                overflow: "hidden",
+                position: isMobile ? "relative" : "sticky",
+                top: isMobile ? "auto" : 0,
+                zIndex: isMobile ? "auto" : zIndex,
+                overflow: isMobile ? "visible" : "hidden",
                 background: "#08000f",
-                borderTopLeftRadius: zIndex > 1 ? 24 : 0,
-                borderTopRightRadius: zIndex > 1 ? 24 : 0,
+                borderTopLeftRadius: !isMobile && zIndex > 1 ? 24 : 0,
+                borderTopRightRadius: !isMobile && zIndex > 1 ? 24 : 0,
                 boxShadow:
-                    zIndex > 1
+                    !isMobile && zIndex > 1
                         ? "0 -12px 48px 0 rgba(0,0,0,0.7), inset 0 1px 0 0 rgba(255,255,255,0.05)"
                         : "none",
             }}
         >
             {/* Scale the content slightly as this section exits */}
-            <motion.div style={{ scale, transformOrigin: "top center" }}>
+            <motion.div style={{ scale: isMobile ? 1 : scale, transformOrigin: "top center" }}>
                 {children}
             </motion.div>
 
             {/* Dark vignette overlay — fades in to swallow the section cinematically */}
-            {!isLast && (
+            {!isLast && !isMobile && (
                 <motion.div
                     aria-hidden
                     style={{

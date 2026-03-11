@@ -10,8 +10,6 @@ const projects = [
         title: "SportsOpi Dataset & Stance Detection",
         tags: ["LLaMA-3.1", "DeepSeek-8b", "NLP", "Dataset"],
         badge: "Research Intern @ IISER Kolkata",
-        description:
-            "Created a 43K-comment dataset on sports controversies with multi-phase LLaMA-3.1 annotation. Fine-tuned LLaMA-3.1-8b and DeepSeek-8b, boosting stance detection F1 from ~0.35 to ~0.75. Achieved inter-annotator agreement κ > 0.8.",
         details: [
             "Created 43K-comment dataset on sports controversies with multi-phase LLaMA-3.1 annotation",
             "Fine-tuned LLaMA-3.1-8b and DeepSeek-8b, boosting stance detection F1 from ~0.35 to ~0.75",
@@ -25,8 +23,6 @@ const projects = [
         title: "EEG Signal Classification",
         tags: ["EEG", "MATLAB", "Python", "SVM"],
         badge: "Research Intern @ DIAT, DRDO",
-        description:
-            "Developed a novel classification method for upper limb movement tasks. Achieved 97.50% micro-averaged accuracy and 99.17% mean accuracy. Outperformed existing approaches by 10% using ensemble ML classifiers.",
         details: [
             "Novel classification method for upper limb movement tasks",
             "Achieved 97.50% micro-averaged accuracy and 99.17% mean accuracy",
@@ -40,8 +36,6 @@ const projects = [
         title: "AI-Powered Spirometer",
         tags: ["TensorFlow", "Flutter", "CNN+LSTM", "MobileNetV2", "Healthcare AI"],
         badge: "Final Year Project - ICASI 2025, Tokyo",
-        description:
-            "Built a cost-effective portable spirometer for respiratory diagnostics. Used dual AI models: 1D CNN+LSTM with 93.73% accuracy and MobileNetV2 with 92.7% accuracy. Added a Flutter app with real-time FVC, FEV1, and PEF measurement.",
         details: [
             "Cost-effective portable spirometer for respiratory diagnostics",
             "Dual AI models: 1D CNN+LSTM (93.73% accuracy) + MobileNetV2 (92.7% accuracy)",
@@ -56,8 +50,6 @@ const projects = [
         title: "Brain Tumor Detection",
         tags: ["CNN", "ResNet-50", "MRI", "TensorFlow"],
         badge: "Project Intern @ IIT Bombay",
-        description:
-            "Implemented a CNN for brain tumor detection with 95% testing accuracy on MRI images. Fine-tuned ResNet-50 to 99.50% training accuracy. Conducted a comparative analysis of deep learning architectures.",
         details: [
             "CNN implementation with 95% testing accuracy on MRI images",
             "ResNet-50 fine-tuning achieving 99.50% training accuracy",
@@ -66,6 +58,17 @@ const projects = [
         highlights: ["95% Test Acc.", "99.50% Train Acc."],
         gradient: "linear-gradient(135deg, #ec4899, #f43f5e)",
         dotColor: "#ec4899",
+    },
+    {
+        title: "EMG-Based Robotics Claw (Prosthetics)",
+        tags: ["EMG", "Robotics", "Biomedical", "Embedded"],
+        badge: "🏆 2nd Rank in Department",
+        details: [
+            "EMG-controlled prosthetic claw secured 2nd rank in department in pre-final year B.E. project",
+        ],
+        highlights: ["2nd Rank"],
+        gradient: "linear-gradient(135deg, #f59e0b, #f97316)",
+        dotColor: "#f59e0b",
     },
 ];
 
@@ -273,10 +276,6 @@ export default function Projects() {
                                     </span>
                                 ))}
                             </div>
-
-                            <p style={{ color: "#d1d5db", lineHeight: 1.7, marginBottom: "1.25rem" }}>
-                                {projects[selected].description}
-                            </p>
 
                             <ul style={{ listStyle: "none", paddingLeft: 0, marginBottom: "1.25rem" }}>
                                 {projects[selected].details.map((detail, i) => (

@@ -61,8 +61,6 @@ export default function Hero() {
                             options={{
                                 strings: [
                                     "Applied ML Researcher",
-                                    "NLP & LLM Engineer",
-                                    "Biomedical AI Developer",
                                     "Research Fellow @ BITS Pilani",
                                 ],
                                 autoStart: true,

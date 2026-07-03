@@ -18,15 +18,6 @@ const education = [
         ],
     },
     {
-        degree: "Higher Secondary (HSC)",
-        institution: "Fergusson Jr. College",
-        duration: "Aug 2019 – Aug 2021",
-        location: "Pune, India",
-        gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
-        logo: "/FC-logo.jpeg",
-        bullets: [],
-    },
-    {
         degree: "B.E. in Electronics & Telecommunication",
         institution: "SPPU, Pune",
         duration: "Dec 2021 – May 2025",
@@ -37,6 +28,15 @@ const education = [
             "Core coursework in electronics, signal processing, embedded systems, and computing.",
             "Active in campus tech communities and collaborative research projects.",
         ],
+    },
+    {
+        degree: "Higher Secondary (HSC)",
+        institution: "Fergusson Jr. College",
+        duration: "Aug 2019 – Aug 2021",
+        location: "Pune, India",
+        gradient: "linear-gradient(135deg, #10b981, #06b6d4)",
+        logo: "/FC-logo.jpeg",
+        bullets: [],
     },
 ];
 

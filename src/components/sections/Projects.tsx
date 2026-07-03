@@ -133,6 +133,24 @@ export default function Projects() {
     const selectedProject = selected !== null ? projects[selected] : null;
     const portalRoot = typeof document !== "undefined" ? document.body : null;
 
+    const getDescriptionParagraphs = (description: string) => {
+        const sentences = description
+            .replace(/\s+/g, " ")
+            .trim()
+            .match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g);
+
+        if (!sentences || sentences.length <= 1) {
+            return [description];
+        }
+
+        const paragraphs: string[] = [];
+        for (let index = 0; index < sentences.length; index += 2) {
+            paragraphs.push(sentences.slice(index, index + 2).join(" ").trim());
+        }
+
+        return paragraphs;
+    };
+
     return (
         <section id="projects" className="relative py-28 bg-[#08000f]" style={{ minHeight: "100vh" }}>
             <div
@@ -256,7 +274,7 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Modal — responsive centered popup with stronger readability */}
+            {/* Modal — centered popup with readable paragraphs on mobile */}
             {portalRoot && createPortal(
                 <AnimatePresence>
                     {selectedProject && (
@@ -276,32 +294,32 @@ export default function Projects() {
                             {/* Responsive dialog */}
                             <motion.div
                                 key="project-dialog"
-                                initial={{ opacity: 0, y: 28, scale: 0.96 }}
+                                initial={{ opacity: 0, y: 18, scale: 0.97 }}
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: 28, scale: 0.96 }}
-                                transition={{ type: "spring", damping: 28, stiffness: 260 }}
+                                exit={{ opacity: 0, y: 18, scale: 0.97 }}
+                                transition={{ type: "spring", damping: 30, stiffness: 260 }}
                                 onClick={(e) => e.stopPropagation()}
-                                className="fixed inset-x-0 bottom-0 md:inset-0 md:flex md:items-center md:justify-center z-[9999] p-3 md:p-6"
+                                className="fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-6"
                             >
                                 <div
                                     className="glass-card relative w-full overflow-hidden border border-indigo-500/25 shadow-2xl"
                                     style={{
-                                        maxWidth: "min(92vw, 46rem)",
-                                        maxHeight: "88svh",
+                                        maxWidth: "min(94vw, 52rem)",
+                                        maxHeight: "90svh",
                                     }}
                                 >
-                                    <div className="flex items-center justify-between gap-4 px-5 pt-4 md:px-8 md:pt-6">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-11 h-11 rounded-2xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-200 text-xs font-bold tracking-wider uppercase">
-                                                Project
+                                    <div className="flex items-start justify-between gap-4 px-5 pt-4 md:px-8 md:pt-6">
+                                        <div className="min-w-0">
+                                            <div className="text-xs text-gray-400 tracking-[0.22em] uppercase mb-1">
+                                                Project details
                                             </div>
-                                            <div className="text-xs text-gray-400 tracking-[0.22em] uppercase">
-                                                Detailed view
-                                            </div>
+                                            <p className="text-[0.78rem] text-indigo-300/80 leading-relaxed">
+                                                Tap outside the card to close.
+                                            </p>
                                         </div>
                                         <button
                                             onClick={() => setSelected(null)}
-                                            className="p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white transition-colors"
+                                            className="shrink-0 p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white transition-colors"
                                             aria-label="Close project details"
                                         >
                                             <X size={18} />
@@ -309,19 +327,19 @@ export default function Projects() {
                                     </div>
 
                                     <div
-                                        className="overflow-y-auto px-5 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6"
-                                        style={{ maxHeight: "calc(88svh - 5rem)", wordBreak: "break-word", overflowWrap: "anywhere" }}
+                                        className="overflow-y-auto overflow-x-hidden px-5 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6"
+                                        style={{ maxHeight: "calc(90svh - 5rem)", wordBreak: "break-word", overflowWrap: "anywhere" }}
                                     >
                                         {selectedProject.badge && (
                                             <span className="inline-block mb-3 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300">
                                                 {selectedProject.badge}
                                             </span>
                                         )}
-                                        <h3 className="font-bold text-[1.35rem] md:text-2xl text-white mb-2 leading-tight break-words">
+                                        <h3 className="font-bold text-[1.35rem] md:text-2xl text-white mb-2 leading-tight break-words pr-8 md:pr-0">
                                             {selectedProject.title}
                                         </h3>
                                         {selectedProject.tagline && (
-                                            <p className="text-sm md:text-[0.98rem] text-indigo-300/90 mb-5 font-medium leading-relaxed max-w-[60ch]">
+                                            <p className="text-sm md:text-[0.98rem] text-indigo-300/90 mb-5 font-medium leading-relaxed max-w-[60ch] text-justify hyphens-auto">
                                                 {selectedProject.tagline}
                                             </p>
                                         )}
@@ -331,9 +349,13 @@ export default function Projects() {
                                             ))}
                                         </div>
                                         {selectedProject.description ? (
-                                            <p className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8 mb-6 max-w-[68ch]">
-                                                {selectedProject.description}
-                                            </p>
+                                            <div className="space-y-4 mb-6 max-w-[68ch]">
+                                                {getDescriptionParagraphs(selectedProject.description).map((paragraph, i) => (
+                                                    <p key={i} className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8 text-justify hyphens-auto">
+                                                        {paragraph}
+                                                    </p>
+                                                ))}
+                                            </div>
                                         ) : (
                                             <ul className="list-none pl-0 mb-5 space-y-3">
                                                 {selectedProject.details?.map((detail, i) => (

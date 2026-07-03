@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
 import { MapPin, Calendar } from "lucide-react";
@@ -121,12 +120,10 @@ export default function Experience() {
                                             height: 40,
                                         }}
                                     >
-                                        <Image
+                                        <img
                                             src={exp.logo}
                                             alt={exp.org}
-                                            width={32}
-                                            height={32}
-                                            style={{ objectFit: "contain" }}
+                                            style={{ maxWidth: "32px", maxHeight: "32px", objectFit: "contain" }}
                                         />
                                     </div>
                                     <div>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
 import { MapPin } from "lucide-react";
@@ -93,12 +92,10 @@ export default function Education() {
                                             height: 48,
                                         }}
                                     >
-                                        <Image
+                                        <img
                                             src={edu.logo}
                                             alt={edu.institution}
-                                            width={40}
-                                            height={40}
-                                            style={{ objectFit: "contain" }}
+                                            style={{ maxWidth: "40px", maxHeight: "40px", objectFit: "contain" }}
                                         />
                                     </div>
                                     <div>

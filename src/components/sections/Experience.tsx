@@ -29,7 +29,7 @@ const experiences = [
         ],
         gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
         dotColor: "#3b82f6",
-        logo: "/IISER-K_Logo.png",
+        logo: "/IISER-K_Logo.svg",
     },
     {
         role: "Research Intern",

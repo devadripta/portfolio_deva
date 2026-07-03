@@ -54,9 +54,11 @@ export default function Education() {
                 <SectionHeading title="Education" subtitle="Academic foundations in computer science and engineering" />
 
                 <div
-                    className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
                     style={{
-                        maxWidth: 1050,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1.5rem",
+                        maxWidth: 900,
                         margin: "0 auto",
                     }}
                 >

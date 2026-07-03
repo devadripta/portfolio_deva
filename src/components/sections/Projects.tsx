@@ -308,14 +308,11 @@ export default function Projects() {
                                         maxHeight: "90svh",
                                     }}
                                 >
-                                    <div className="flex items-start justify-between gap-4 px-5 pt-4 md:px-8 md:pt-6">
-                                        <div className="min-w-0">
+                                    <div className="flex items-start justify-between gap-4 px-6 pt-5 md:px-10 md:pt-8">
+                                        <div className="min-w-0 pl-2 md:pl-3">
                                             <div className="text-xs text-gray-400 tracking-[0.22em] uppercase mb-1">
                                                 Project details
                                             </div>
-                                            <p className="text-[0.78rem] text-indigo-300/80 leading-relaxed">
-                                                Tap outside the card to close.
-                                            </p>
                                         </div>
                                         <button
                                             onClick={() => setSelected(null)}

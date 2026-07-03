@@ -308,9 +308,9 @@ export default function Projects() {
                                         maxHeight: "90svh",
                                     }}
                                 >
-                                    <div className="flex items-start justify-between gap-4 px-6 pt-5 md:px-10 md:pt-8">
-                                        <div className="min-w-0 pl-2 md:pl-3">
-                                            <div className="text-xs text-gray-400 tracking-[0.22em] uppercase mb-1">
+                                    <div className="flex items-start justify-between gap-4 px-5 pt-5 md:px-8 md:pt-8">
+                                        <div className="min-w-0">
+                                            <div className="text-xs text-gray-400 tracking-[0.16em] uppercase mb-1 pl-1">
                                                 Project details
                                             </div>
                                         </div>
@@ -324,7 +324,7 @@ export default function Projects() {
                                     </div>
 
                                     <div
-                                        className="overflow-y-auto overflow-x-hidden px-5 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6"
+                                        className="overflow-y-auto overflow-x-hidden px-5 pb-8 pt-4 md:px-10 md:pb-10 md:pt-6"
                                         style={{ maxHeight: "calc(90svh - 5rem)", wordBreak: "break-word", overflowWrap: "anywhere" }}
                                     >
                                         {selectedProject.badge && (
@@ -336,7 +336,7 @@ export default function Projects() {
                                             {selectedProject.title}
                                         </h3>
                                         {selectedProject.tagline && (
-                                            <p className="text-sm md:text-[0.98rem] text-indigo-300/90 mb-5 font-medium leading-relaxed max-w-[60ch] text-justify hyphens-auto">
+                                            <p className="text-sm md:text-[0.98rem] text-indigo-300/90 mb-5 font-medium leading-relaxed max-w-[64ch] text-left">
                                                 {selectedProject.tagline}
                                             </p>
                                         )}
@@ -348,7 +348,7 @@ export default function Projects() {
                                         {selectedProject.description ? (
                                             <div className="space-y-4 mb-6 max-w-[68ch]">
                                                 {getDescriptionParagraphs(selectedProject.description).map((paragraph, i) => (
-                                                    <p key={i} className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8 text-justify hyphens-auto">
+                                                    <p key={i} className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8 text-left">
                                                         {paragraph}
                                                     </p>
                                                 ))}

@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
-import { Briefcase, MapPin, Calendar } from "lucide-react";
+import { MapPin, Calendar } from "lucide-react";
 
 const experiences = [
     {
@@ -16,6 +17,7 @@ const experiences = [
         ],
         gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
         dotColor: "#6366f1",
+        logo: "/BITS_Pilani-Logo.jpg",
     },
     {
         role: "Research Intern",
@@ -28,6 +30,7 @@ const experiences = [
         ],
         gradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
         dotColor: "#3b82f6",
+        logo: "/IISER-K_Logo.png",
     },
     {
         role: "Research Intern",
@@ -40,6 +43,7 @@ const experiences = [
         ],
         gradient: "linear-gradient(135deg, #a855f7, #ec4899)",
         dotColor: "#a855f7",
+        logo: "/Defence_Institute_of_Advanced_Technology.png",
     },
     {
         role: "Project Intern",
@@ -53,6 +57,7 @@ const experiences = [
         ],
         gradient: "linear-gradient(135deg, #ec4899, #f43f5e)",
         dotColor: "#ec4899",
+        logo: "/Indian_Institute_of_Technology_Bombay_Logo.png",
     },
 ];
 
@@ -105,13 +110,24 @@ export default function Experience() {
                                 <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem", marginBottom: "0.5rem" }}>
                                     <div
                                         style={{
-                                            padding: "7px",
+                                            padding: "6px",
                                             borderRadius: "9px",
-                                            background: exp.gradient,
+                                            background: "white",
                                             flexShrink: 0,
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            width: 40,
+                                            height: 40,
                                         }}
                                     >
-                                        <Briefcase size={14} color="white" />
+                                        <Image
+                                            src={exp.logo}
+                                            alt={exp.org}
+                                            width={32}
+                                            height={32}
+                                            style={{ objectFit: "contain" }}
+                                        />
                                     </div>
                                     <div>
                                         <h3 style={{ fontWeight: 700, fontSize: "0.95rem", color: "white", lineHeight: 1.3 }}>{exp.role}</h3>

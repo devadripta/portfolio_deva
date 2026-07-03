@@ -24,7 +24,7 @@ export default function Home() {
       <CinemaWrapper zIndex={4}>
         <Experience />
       </CinemaWrapper>
-      <CinemaWrapper zIndex={5}>
+      <CinemaWrapper zIndex={5} tall>
         <Projects />
       </CinemaWrapper>
       <CinemaWrapper zIndex={6}>

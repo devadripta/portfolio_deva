@@ -8,9 +8,11 @@ interface CinemaWrapperProps {
     zIndex: number;
     /** Set true on the last section so it never fades out */
     isLast?: boolean;
+    /** Set true when section content is taller than the viewport (e.g. Projects) so all content is visible */
+    tall?: boolean;
 }
 
-export default function CinemaWrapper({ children, zIndex, isLast = false }: CinemaWrapperProps) {
+export default function CinemaWrapper({ children, zIndex, isLast = false, tall = false }: CinemaWrapperProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -68,7 +70,7 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
                 position: isMobile ? "relative" : "sticky",
                 top: isMobile ? "auto" : 0,
                 zIndex: isMobile ? "auto" : zIndex,
-                overflow: isMobile ? "visible" : "hidden",
+                overflow: isMobile ? "visible" : tall ? "visible" : "hidden",
                 marginTop: isMobile && zIndex > 1 ? 12 : 0,
                 marginLeft: isMobile ? 10 : 0,
                 marginRight: isMobile ? 10 : 0,

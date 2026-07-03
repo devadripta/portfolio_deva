@@ -90,7 +90,7 @@ export default function Hero() {
                             />
                         </a>
                         <a
-                            href="/resume"
+                            href="/Devadripta_Jadhav_CV_2026_07.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group flex items-center justify-center gap-2 px-10 py-4 rounded-full border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/10 hover:border-indigo-500/50 font-bold transition-all duration-300 hover:scale-105 min-w-[200px]"

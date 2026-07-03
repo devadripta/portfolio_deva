@@ -18,7 +18,7 @@ export default function About() {
             <div className="section-container relative">
                 <SectionHeading
                     title="About Me"
-                    subtitle="A researcher who turns complex problems into elegant AI solutions."
+                    subtitle="Researcher. Builder. Perpetual explorer of ideas at the edge of what is known."
                 />
 
                 {/* Two-column layout - stacks on mobile, side-by-side on lg */}
@@ -56,31 +56,28 @@ export default function About() {
                         transition={{ duration: 0.6 }}
                     >
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
-                            I&apos;m a PhD candidate in Computer Science at BITS Pilani, Goa, specializing in deep learning for NLP and computer vision.
-                        </p>
-                        <p className="text-gray-300 text-lg leading-relaxed mb-5">
-                            I&apos;m currently a Research Fellow at{" "}
-                            <span className="text-indigo-400 font-semibold">
-                                BITS Pilani, K K Birla Goa Campus
-                            </span>
-                            , where I work on industry-sponsored ML systems for automotive lifecycle and safety.
+                            I&apos;m a PhD candidate in Computer Science at{" "}
+                            <span className="text-indigo-400 font-semibold">BITS Pilani, Goa</span>,
+                            specializing in computer vision and foundation models. I&apos;m currently a Research Fellow at BITS Pilani, K K Birla Goa Campus, where I work on industry-sponsored ML systems for automotive lifecycle and safety.
                         </p>
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
                             My work spans{" "}
-                            <span className="text-blue-400 font-semibold">NLP &amp; LLMs</span>,{" "}
-                            <span className="text-purple-400 font-semibold">biomedical signal processing</span>, and{" "}
-                            <span className="text-indigo-400 font-semibold">computer vision.</span>
+                            <span className="text-blue-400 font-semibold">NLP</span>,{" "}
+                            <span className="text-purple-400 font-semibold">robotics</span>,{" "}
+                            <span className="text-pink-400 font-semibold">biomedical signal processing</span>, and especially{" "}
+                            <span className="text-indigo-400 font-semibold">Computer Vision</span>.
+                            I closely follow foundation model research across vision and language, and I&apos;m increasingly drawn to{" "}
+                            <span className="text-blue-300 font-semibold">3D vision</span> and its open problems. Healthcare is a space I care deeply about.
                         </p>
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
-                            Driven by curiosity, I love to explore interesting things, innovate, and add to knowledge for the future of human kind.
+                            I love to explore interesting things, innovate, and contribute to knowledge for the future of humankind. We can talk about barmy things to invent, build, engineer. Not limited to but we can also talk about literature, philosophy, economics, sociology, geopolitics, et cetera :)
                         </p>
                         <p className="text-gray-400 text-base leading-relaxed">
-                            I&apos;ve interned at{" "}
+                            I&apos;ve previously interned at{" "}
                             <span className="text-gray-200 font-medium">IISER Kolkata</span>,{" "}
                             <span className="text-gray-200 font-medium">Defence Institute of Advanced Technology (DIAT-DRDO)</span>, and{" "}
                             <span className="text-gray-200 font-medium">IIT Bombay</span>, and co-founded{" "}
-                            <span className="text-indigo-400 font-semibold">CodePVG</span>, a campus tech community
-                            that brought together 1000+ students.
+                            <span className="text-indigo-400 font-semibold">CodePVG</span> during my bachelor days, a campus tech community that brought together 1000+ students.
                         </p>
                     </motion.div>
                 </div>

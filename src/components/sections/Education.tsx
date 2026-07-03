@@ -95,6 +95,8 @@ export default function Education() {
                                         <img
                                             src={edu.logo}
                                             alt={edu.institution}
+                                            width={40}
+                                            height={40}
                                             style={{ maxWidth: "40px", maxHeight: "40px", objectFit: "contain" }}
                                         />
                                     </div>

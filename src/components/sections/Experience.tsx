@@ -123,6 +123,8 @@ export default function Experience() {
                                         <img
                                             src={exp.logo}
                                             alt={exp.org}
+                                            width={32}
+                                            height={32}
                                             style={{ maxWidth: "32px", maxHeight: "32px", objectFit: "contain" }}
                                         />
                                     </div>

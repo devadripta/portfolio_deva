@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
 import { X, Github } from "lucide-react";
@@ -129,6 +130,11 @@ const projects = [
 
 export default function Projects() {
     const [selected, setSelected] = useState<number | null>(null);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     return (
         <section id="projects" className="relative py-28 bg-[#08000f]" style={{ minHeight: "100vh" }}>
@@ -253,103 +259,104 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Modal */}
-            <AnimatePresence>
-                {selected !== null && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="modal-overlay fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-4"
-                        onClick={() => setSelected(null)}
-                    >
+            {/* Modal rendered via portal so it escapes CinemaWrapper's overflow:hidden */}
+            {isMounted && createPortal(
+                <AnimatePresence>
+                    {selected !== null && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 30 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="glass-card w-full max-w-[520px] p-5 md:p-8 relative max-h-[88vh] md:max-h-[85vh] overflow-y-auto border border-indigo-500/25"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="modal-overlay fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-4"
+                            onClick={() => setSelected(null)}
                         >
-                            <button
-                                onClick={() => setSelected(null)}
-                                className="absolute top-3 right-3 md:top-4 md:right-4 p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white"
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                                onClick={(e) => e.stopPropagation()}
+                                className="glass-card w-full max-w-[520px] p-5 md:p-8 relative max-h-[88vh] md:max-h-[85vh] overflow-y-auto border border-indigo-500/25"
                             >
-                                <X size={18} />
-                            </button>
-
-                            {projects[selected].badge && (
-                                <span
-                                    className="inline-block mb-3 md:mb-4 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300"
+                                <button
+                                    onClick={() => setSelected(null)}
+                                    className="absolute top-3 right-3 md:top-4 md:right-4 p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white"
                                 >
-                                    {projects[selected].badge}
-                                </span>
-                            )}
+                                    <X size={18} />
+                                </button>
 
-                            <h3 className="font-bold text-lg md:text-xl text-white pr-8 mb-1 leading-snug">
-                                {projects[selected].title}
-                            </h3>
-
-                            {projects[selected].tagline && (
-                                <p className="text-xs md:text-sm text-indigo-300/90 mb-4 font-medium leading-relaxed">
-                                    {projects[selected].tagline}
-                                </p>
-                            )}
-
-                            <div className="flex gap-2 flex-wrap mb-4">
-                                {projects[selected].highlights.map((h, i) => (
-                                    <span
-                                        key={i}
-                                        className="px-3 py-1 rounded-lg text-[0.72rem] font-bold text-white"
-                                        style={{ background: projects[selected].gradient }}
-                                    >
-                                        {h}
+                                {projects[selected].badge && (
+                                    <span className="inline-block mb-3 md:mb-4 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300">
+                                        {projects[selected].badge}
                                     </span>
-                                ))}
-                            </div>
+                                )}
 
-                            {projects[selected].description ? (
-                                <p className="text-gray-300 text-xs md:text-sm leading-relaxed md:leading-loose mb-5 text-justify">
-                                    {projects[selected].description}
-                                </p>
-                            ) : (
-                                <ul className="list-none pl-0 mb-4">
-                                    {projects[selected].details?.map((detail, i) => (
-                                        <li key={i} className="flex gap-2 mb-2">
-                                            <span style={{ color: projects[selected].dotColor }} className="flex-shrink-0 mt-0.5">•</span>
-                                            <span className="text-gray-300 text-xs md:text-sm leading-relaxed">{detail}</span>
-                                        </li>
+                                <h3 className="font-bold text-lg md:text-xl text-white pr-8 mb-1 leading-snug">
+                                    {projects[selected].title}
+                                </h3>
+
+                                {projects[selected].tagline && (
+                                    <p className="text-xs md:text-sm text-indigo-300/90 mb-4 font-medium leading-relaxed">
+                                        {projects[selected].tagline}
+                                    </p>
+                                )}
+
+                                <div className="flex gap-2 flex-wrap mb-4">
+                                    {projects[selected].highlights.map((h, i) => (
+                                        <span
+                                            key={i}
+                                            className="px-3 py-1 rounded-lg text-[0.72rem] font-bold text-white"
+                                            style={{ background: projects[selected].gradient }}
+                                        >
+                                            {h}
+                                        </span>
                                     ))}
-                                </ul>
-                            )}
+                                </div>
 
-                            <div className="flex gap-2 flex-wrap mb-6">
-                                {projects[selected].tags.map((t, i) => (
-                                    <span key={i} className="skill-badge">{t}</span>
-                                ))}
-                            </div>
+                                {projects[selected].description ? (
+                                    <p className="text-gray-300 text-xs md:text-sm leading-relaxed md:leading-loose mb-5 text-justify">
+                                        {projects[selected].description}
+                                    </p>
+                                ) : (
+                                    <ul className="list-none pl-0 mb-4">
+                                        {projects[selected].details?.map((detail, i) => (
+                                            <li key={i} className="flex gap-2 mb-2">
+                                                <span style={{ color: projects[selected].dotColor }} className="flex-shrink-0 mt-0.5">•</span>
+                                                <span className="text-gray-300 text-xs md:text-sm leading-relaxed">{detail}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
 
-                            <div className="flex gap-3">
-                                <a
-                                    href={projects[selected].link || "https://github.com/devadripta"}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="grow flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
-                                >
-                                    {projects[selected].link ? "View Paper" : "View Code"}
-                                </a>
-                                <a
-                                    href="https://github.com/devadripta"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center p-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-all"
-                                >
-                                    <Github size={20} />
-                                </a>
-                            </div>
+                                <div className="flex gap-2 flex-wrap mb-6">
+                                    {projects[selected].tags.map((t, i) => (
+                                        <span key={i} className="skill-badge">{t}</span>
+                                    ))}
+                                </div>
+
+                                <div className="flex gap-3">
+                                    <a
+                                        href={projects[selected].link || "https://github.com/devadripta"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="grow flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+                                    >
+                                        {projects[selected].link ? "View Paper" : "View Code"}
+                                    </a>
+                                    <a
+                                        href="https://github.com/devadripta"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-center p-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+                                    >
+                                        <Github size={20} />
+                                    </a>
+                                </div>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </section>
     );
 }

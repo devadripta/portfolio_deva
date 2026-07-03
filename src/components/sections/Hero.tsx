@@ -55,20 +55,22 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.6 }}
-                        className="text-xl md:text-2xl text-gray-300 mb-8 h-10"
+                        className="text-xl md:text-2xl text-gray-300 mb-8 flex justify-center items-center min-h-[2.5rem]"
                     >
-                        <Typewriter
-                            options={{
-                                strings: [
-                                    "Applied AI Researcher",
-                                    "Research Fellow @ BITS Pilani",
-                                ],
-                                autoStart: true,
-                                loop: true,
-                                delay: 50,
-                                deleteSpeed: 30,
-                            }}
-                        />
+                        <span className="whitespace-nowrap">
+                            <Typewriter
+                                options={{
+                                    strings: [
+                                        "Applied AI Researcher",
+                                        "Research Fellow @ BITS Pilani",
+                                    ],
+                                    autoStart: true,
+                                    loop: true,
+                                    delay: 50,
+                                    deleteSpeed: 30,
+                                }}
+                            />
+                        </span>
                     </motion.div>
 
                     <motion.div

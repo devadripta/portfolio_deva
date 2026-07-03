@@ -24,11 +24,17 @@ export default function Home() {
       <Hero />
 
       <div style={card}><About /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Education /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Experience /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Projects /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Skills /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Volunteering /></div>
+      <div className="h-4 md:h-6 bg-[#05000a]" />
       <div style={card}><Contact /></div>
 
       <div style={{ position: "relative", background: "#0a0012" }}>

@@ -24,9 +24,18 @@ export default function Home() {
       <CinemaWrapper zIndex={4}>
         <Experience />
       </CinemaWrapper>
-      <CinemaWrapper zIndex={5} tall>
+      {/* Projects is not sticky — too tall for viewport, must scroll naturally */}
+      <div style={{
+        position: "relative",
+        zIndex: 5,
+        background: "#08000f",
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        boxShadow: "0 -12px 48px 0 rgba(0,0,0,0.7), inset 0 1px 0 0 rgba(255,255,255,0.05)",
+        marginTop: 0,
+      }}>
         <Projects />
-      </CinemaWrapper>
+      </div>
       <CinemaWrapper zIndex={6}>
         <Skills />
       </CinemaWrapper>

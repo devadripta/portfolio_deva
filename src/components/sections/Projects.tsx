@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
@@ -130,11 +130,8 @@ const projects = [
 
 export default function Projects() {
     const [selected, setSelected] = useState<number | null>(null);
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    const selectedProject = selected !== null ? projects[selected] : null;
+    const portalRoot = typeof document !== "undefined" ? document.body : null;
 
     return (
         <section id="projects" className="relative py-28 bg-[#08000f]" style={{ minHeight: "100vh" }}>
@@ -259,103 +256,116 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Modal rendered via portal so it escapes CinemaWrapper's overflow:hidden */}
-            {isMounted && createPortal(
+            {/* Modal — responsive centered popup with stronger readability */}
+            {portalRoot && createPortal(
                 <AnimatePresence>
-                    {selected !== null && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="modal-overlay fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-4"
-                            onClick={() => setSelected(null)}
-                        >
+                    {selectedProject && (
+                        <>
+                            {/* Backdrop */}
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                                key="backdrop"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="fixed inset-0 z-[9998]"
+                                style={{ background: "rgba(0,0,0,0.75)", backdropFilter: "blur(6px)" }}
+                                onClick={() => setSelected(null)}
+                            />
+
+                            {/* Responsive dialog */}
+                            <motion.div
+                                key="project-dialog"
+                                initial={{ opacity: 0, y: 28, scale: 0.96 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: 28, scale: 0.96 }}
+                                transition={{ type: "spring", damping: 28, stiffness: 260 }}
                                 onClick={(e) => e.stopPropagation()}
-                                className="glass-card w-full max-w-[520px] p-5 md:p-8 relative max-h-[88vh] md:max-h-[85vh] overflow-y-auto border border-indigo-500/25"
+                                className="fixed inset-x-0 bottom-0 md:inset-0 md:flex md:items-center md:justify-center z-[9999] p-3 md:p-6"
                             >
-                                <button
-                                    onClick={() => setSelected(null)}
-                                    className="absolute top-3 right-3 md:top-4 md:right-4 p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white"
+                                <div
+                                    className="glass-card relative w-full overflow-hidden border border-indigo-500/25 shadow-2xl"
+                                    style={{
+                                        maxWidth: "min(92vw, 46rem)",
+                                        maxHeight: "88svh",
+                                    }}
                                 >
-                                    <X size={18} />
-                                </button>
-
-                                {projects[selected].badge && (
-                                    <span className="inline-block mb-3 md:mb-4 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300">
-                                        {projects[selected].badge}
-                                    </span>
-                                )}
-
-                                <h3 className="font-bold text-lg md:text-xl text-white pr-8 mb-1 leading-snug">
-                                    {projects[selected].title}
-                                </h3>
-
-                                {projects[selected].tagline && (
-                                    <p className="text-xs md:text-sm text-indigo-300/90 mb-4 font-medium leading-relaxed">
-                                        {projects[selected].tagline}
-                                    </p>
-                                )}
-
-                                <div className="flex gap-2 flex-wrap mb-4">
-                                    {projects[selected].highlights.map((h, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-3 py-1 rounded-lg text-[0.72rem] font-bold text-white"
-                                            style={{ background: projects[selected].gradient }}
+                                    <div className="flex items-center justify-between gap-4 px-5 pt-4 md:px-8 md:pt-6">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-11 rounded-2xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-200 text-xs font-bold tracking-wider uppercase">
+                                                Project
+                                            </div>
+                                            <div className="text-xs text-gray-400 tracking-[0.22em] uppercase">
+                                                Detailed view
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={() => setSelected(null)}
+                                            className="p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white transition-colors"
+                                            aria-label="Close project details"
                                         >
-                                            {h}
-                                        </span>
-                                    ))}
-                                </div>
+                                            <X size={18} />
+                                        </button>
+                                    </div>
 
-                                {projects[selected].description ? (
-                                    <p className="text-gray-300 text-xs md:text-sm leading-relaxed md:leading-loose mb-5 text-justify">
-                                        {projects[selected].description}
-                                    </p>
-                                ) : (
-                                    <ul className="list-none pl-0 mb-4">
-                                        {projects[selected].details?.map((detail, i) => (
-                                            <li key={i} className="flex gap-2 mb-2">
-                                                <span style={{ color: projects[selected].dotColor }} className="flex-shrink-0 mt-0.5">•</span>
-                                                <span className="text-gray-300 text-xs md:text-sm leading-relaxed">{detail}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-
-                                <div className="flex gap-2 flex-wrap mb-6">
-                                    {projects[selected].tags.map((t, i) => (
-                                        <span key={i} className="skill-badge">{t}</span>
-                                    ))}
-                                </div>
-
-                                <div className="flex gap-3">
-                                    <a
-                                        href={projects[selected].link || "https://github.com/devadripta"}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="grow flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+                                    <div
+                                        className="overflow-y-auto px-5 pb-6 pt-5 md:px-8 md:pb-8 md:pt-6"
+                                        style={{ maxHeight: "calc(88svh - 5rem)", wordBreak: "break-word", overflowWrap: "anywhere" }}
                                     >
-                                        {projects[selected].link ? "View Paper" : "View Code"}
-                                    </a>
-                                    <a
-                                        href="https://github.com/devadripta"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-center p-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-all"
-                                    >
-                                        <Github size={20} />
-                                    </a>
+                                        {selectedProject.badge && (
+                                            <span className="inline-block mb-3 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300">
+                                                {selectedProject.badge}
+                                            </span>
+                                        )}
+                                        <h3 className="font-bold text-[1.35rem] md:text-2xl text-white mb-2 leading-tight break-words">
+                                            {selectedProject.title}
+                                        </h3>
+                                        {selectedProject.tagline && (
+                                            <p className="text-sm md:text-[0.98rem] text-indigo-300/90 mb-5 font-medium leading-relaxed max-w-[60ch]">
+                                                {selectedProject.tagline}
+                                            </p>
+                                        )}
+                                        <div className="flex gap-2 flex-wrap mb-5">
+                                            {selectedProject.highlights.map((h, i) => (
+                                                <span key={i} className="px-3 py-1 rounded-lg text-[0.72rem] font-bold text-white" style={{ background: selectedProject.gradient }}>{h}</span>
+                                            ))}
+                                        </div>
+                                        {selectedProject.description ? (
+                                            <p className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8 mb-6 max-w-[68ch]">
+                                                {selectedProject.description}
+                                            </p>
+                                        ) : (
+                                            <ul className="list-none pl-0 mb-5 space-y-3">
+                                                {selectedProject.details?.map((detail, i) => (
+                                                    <li key={i} className="flex gap-2">
+                                                        <span style={{ color: selectedProject.dotColor }} className="flex-shrink-0 mt-0.5">•</span>
+                                                        <span className="text-gray-300 text-sm md:text-[0.96rem] leading-7 md:leading-8">{detail}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        <div className="flex gap-2 flex-wrap mb-7">
+                                            {selectedProject.tags.map((t, i) => (
+                                                <span key={i} className="skill-badge">{t}</span>
+                                            ))}
+                                        </div>
+                                        <div className="flex flex-col sm:flex-row gap-3">
+                                            <a href={selectedProject.link || "https://github.com/devadripta"} target="_blank" rel="noopener noreferrer"
+                                                className="grow flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold text-sm transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(99,102,241,0.35)]">
+                                                {selectedProject.link ? "View Paper" : "View Code"}
+                                            </a>
+                                            <a href="https://github.com/devadripta" target="_blank" rel="noopener noreferrer"
+                                                className="flex items-center justify-center p-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                                                <Github size={20} />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </motion.div>
-                        </motion.div>
+                        </>
                     )}
                 </AnimatePresence>,
-                document.body
+                portalRoot
             )}
         </section>
     );

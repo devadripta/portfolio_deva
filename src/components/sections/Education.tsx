@@ -7,7 +7,7 @@ import { MapPin } from "lucide-react";
 const education = [
     {
         degree: "PhD in Computer Science (CSIS)",
-        institution: "BITS Pilani, K K Birla Goa Campus",
+        institution: "BITS Pilani",
         duration: "Dec 2025 – Present",
         location: "Goa, India",
         gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",

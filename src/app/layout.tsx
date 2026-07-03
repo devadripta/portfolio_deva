@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devadripta Jadhav | Applied ML Researcher",
+  title: "Devadripta Jadhav | Applied AI Researcher",
   description:
-    "Portfolio of Devadripta Jadhav, Applied ML Researcher and PhD Student at BITS Pilani Goa. Specializing in NLP, LLMs, Biomedical AI, and Computer Vision.",
+    "Portfolio of Devadripta Jadhav, Applied AI Researcher and PhD Student at BITS Pilani Goa. Specializing in NLP, LLMs, Biomedical AI, and Computer Vision.",
   keywords: [
     "Machine Learning",
     "NLP",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     apple: "/deva_image.png",
   },
   openGraph: {
-    title: "Devadripta Jadhav | Applied ML Researcher",
+    title: "Devadripta Jadhav | Applied AI Researcher",
     description:
-      "Portfolio of Devadripta Jadhav, Applied ML Researcher and PhD Student at BITS Pilani Goa.",
+      "Portfolio of Devadripta Jadhav, Applied AI Researcher and PhD Student at BITS Pilani Goa.",
     type: "website",
   },
 };

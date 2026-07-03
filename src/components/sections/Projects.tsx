@@ -9,7 +9,7 @@ const projects = [
     {
         title: "Parameter-Efficient Automotive Damage Detection via Deformable Spatial Adapters",
         tagline: "Bridging rigid foundation model features to irregular dent geometry using DCNv4 adapters.",
-        description: "Developed a novel object detection pipeline for automotive dent detection on the CarDD dataset (1,242 training images, 352 validation images). The core contribution is a lightweight DCNv4-based deformable spatial adapter that bridges features from a frozen DINOv3-pretrained ConvNeXt backbone into an RTMDet detection head. Instead of using DCNv4 as a standard backbone operator, it is used as a spatial bridging module — learning dynamic sampling offsets to conform the rigid DINOv3 feature grid to the irregular, unstructured morphology of car dents. Implemented a custom grid_sample-based DCNv4 operator (avoiding the official CUDA-only build) to enable training on Kaggle dual T4 GPUs. The adapter layers are kept unfrozen during training while the backbone remains frozen, making the approach highly parameter-efficient. Qualitative evaluation shows DCNv4 adapters improve detection on specific dent geometries that standard conv adapters miss. Best checkpoint achieved at epoch 48 based on COCO bbox mAP. This work is being written as an academic paper targeting WACV 2027 / IEEE Transactions on Instrumentation and Measurement.",
+        description: "Developed a novel object detection pipeline for automotive dent detection on the CarDD dataset (1,242 training images, 352 validation images). The core contribution is a lightweight DCNv4-based deformable spatial adapter that bridges features from a frozen DINOv3-pretrained ConvNeXt backbone into an RTMDet detection head. Instead of using DCNv4 as a standard backbone operator, it is used as a spatial bridging module, learning dynamic sampling offsets to conform the rigid DINOv3 feature grid to the irregular, unstructured morphology of car dents. Implemented a custom grid_sample-based DCNv4 operator (avoiding the official CUDA-only build) to enable training on Kaggle dual T4 GPUs. The adapter layers are kept unfrozen during training while the backbone remains frozen, making the approach highly parameter-efficient. Qualitative evaluation shows DCNv4 adapters improve detection on specific dent geometries that standard conv adapters miss. Best checkpoint achieved at epoch 48 based on COCO bbox mAP. This work is being written as an academic paper targeting WACV 2027 / IEEE Transactions on Instrumentation and Measurement.",
         tags: ["PyTorch", "MMDetection", "RTMDet", "DCNv4 (custom)", "ConvNeXt", "DINOv3", "Kaggle (dual T4 GPU)", "COCO evaluation", "CarDD dataset"],
         badge: "Paper in Progress",
         highlights: ["CarDD Dataset", "WACV 2027 Target"],
@@ -20,7 +20,7 @@ const projects = [
     {
         title: "Robust by Design: Benchmarking Hyperdimensional Computing Against Neural Baselines Under Hardware Faults",
         tagline: "HDC stays above 94% accuracy where FNNs and Transformers collapse to near-random at sub-0.1% bit-flip rates.",
-        description: "Extending an accepted ICCD conference paper into a full journal submission, this work presents a rigorous robustness analysis of Hyperdimensional Computing (HDC) versus FNN and Transformer baselines under hardware-induced bit-flip faults. The key finding from the ICCD paper is that FNNs and Transformers collapse to near-random accuracy (~18.86%) at bit-flip rates below 0.001, while HDC maintains above 94% accuracy through 30% prototype bit-flips and degrades gracefully — only reaching 0% accuracy past 60% flip rate. For the journal extension, experiments are scaled across five datasets: Resonator networks, Feature extraction, Genome sequence matching, Seizure detection, and Sparse event classification. Additional analyses include: single-bit flip sensitivity (deterministic full sweep across all bit positions), layer-position analysis (early/middle/last layer corruption), and a reliability model with formal equations. Experiments are run via detached screen sessions on a remote H100 server with fixed-seed reruns for reproducibility.",
+        description: "Extending an accepted ICCD conference paper into a full journal submission, this work presents a rigorous robustness analysis of Hyperdimensional Computing (HDC) versus FNN and Transformer baselines under hardware-induced bit-flip faults. The key finding from the ICCD paper is that FNNs and Transformers collapse to near-random accuracy (~18.86%) at bit-flip rates below 0.001, while HDC maintains above 94% accuracy through 30% prototype bit-flips and degrades gracefully, only reaching 0% accuracy past 60% flip rate. For the journal extension, experiments are scaled across five datasets: Resonator networks, Feature extraction, Genome sequence matching, Seizure detection, and Sparse event classification. Additional analyses include: single-bit flip sensitivity (deterministic full sweep across all bit positions), layer-position analysis (early/middle/last layer corruption), and a reliability model with formal equations. Experiments are run via detached screen sessions on a remote H100 server with fixed-seed reruns for reproducibility.",
         tags: ["Python", "PyTorch", "H100 GPU (remote)", "Fault Injection", "Benchmark Datasets"],
         badge: "Journal Submission in Progress",
         highlights: ["HDC > 94% Acc", "Journal Extension"],
@@ -31,7 +31,7 @@ const projects = [
     {
         title: "TPACT: Transformer Positional Encoding with Adaptive Coordinate Tokenization for 3D Point Clouds",
         tagline: "A geometry-aware positional encoding method that outperforms existing PE variants on real-world noisy point cloud data.",
-        description: "Designed and benchmarked TPACT (Transformer-based Positional Encoding with Adaptive Coordinate Tokenization), a novel positional encoding strategy for transformer-based 3D point cloud classification. TPACT combines three components: CCG (Coordinate Confidence Gating), FM-RoPE (Frequency-Modulated Rotary Positional Embedding), and a 3-head attention layout. The method is evaluated against multiple existing PE variants on three benchmarks: a synthetic cube classification task, ScanObjectNN (real-world, noisy scans), and ModelNet40 (clean synthetic objects). Results show TPACT outperforms all PE variants on the primary cube task (97.97% vs next best 94.69%) and on ScanObjectNN (53.61% vs RoPE at 49.97%), demonstrating superior generalization to real-world geometric noise. On ModelNet40 (clean data, less geometric ambiguity), TPACT is competitive but trails slightly, which is honestly reported as a known limitation — CCG's statistics cannot distinguish missing points from noisy coordinates. Non-transformer baselines (PointNet++ and DGCNN) are included as landmarks, not competitive targets. The paper is being submitted to WACV and ACCV. Core claim: TPACT is the most effective PE strategy for transformer-based 3D processing, particularly on real-world, noisy point cloud data.",
+        description: "Designed and benchmarked TPACT (Transformer-based Positional Encoding with Adaptive Coordinate Tokenization), a novel positional encoding strategy for transformer-based 3D point cloud classification. TPACT combines three components: CCG (Coordinate Confidence Gating), FM-RoPE (Frequency-Modulated Rotary Positional Embedding), and a 3-head attention layout. The method is evaluated against multiple existing PE variants on three benchmarks: a synthetic cube classification task, ScanObjectNN (real-world, noisy scans), and ModelNet40 (clean synthetic objects). Results show TPACT outperforms all PE variants on the primary cube task (97.97% vs next best 94.69%) and on ScanObjectNN (53.61% vs RoPE at 49.97%), demonstrating superior generalization to real-world geometric noise. On ModelNet40 (clean data, less geometric ambiguity), TPACT is competitive but trails slightly, which is honestly reported as a known limitation where CCG's statistics cannot distinguish missing points from noisy coordinates. Non-transformer baselines (PointNet++ and DGCNN) are included as landmarks, not competitive targets. The paper is being submitted to WACV and ACCV. Core claim: TPACT is the most effective PE strategy for transformer-based 3D processing, particularly on real-world, noisy point cloud data.",
         tags: ["PyTorch", "Transformer", "PointNet++", "DGCNN", "ModelNet40", "ScanObjectNN", "Kaggle GPU"],
         badge: "Paper in Progress",
         highlights: ["ScanObjectNN: 53.61%", "Cube Task: 97.97%"],
@@ -42,7 +42,7 @@ const projects = [
     {
         title: "Retinal Micro-Lesion Detection via RETFound-DETR: Fine-Tuning a Foundation Model for Diabetic Retinopathy Screening",
         tagline: "Adapting a retinal foundation model (ViT-Large, pretrained on 1.6M fundus images) for bounding-box-level micro-lesion detection.",
-        description: "Designed and implemented a RETFound-DETR pipeline for retinal micro-lesion detection, specifically targeting microaneurysms (MA) — the earliest lesion in Diabetic Retinopathy. Built on RETFound, a ViT-Large masked autoencoder pretrained on 1.6M unlabelled fundus and OCT images using self-supervised learning (MAE), the pipeline adapts the frozen foundation backbone to a DETR-based detection head for bounding box prediction at 512×512 resolution. Worked with three datasets: MAPLES (built on MESSIDOR, adds segmentation and MA labels), IDRiD (54 train / 27 test images with segmentation), and a Shrouk MA patch dataset. Developed understanding of dataset hierarchy — MESSIDOR provides DR grading labels, MAPLES adds fine-grained segmentation. Started with a clean MA vs. Non-MA binary classification phase (patch-level) using RETFound features as the foundation, then progressed toward multi-class bounding-box detection. Debugged DETR training issues including matcher instability, foreground score thresholding, and slow F1 convergence in early epochs. Also studied the RETFound-DINOv2 variant (contrastive SSL pretraining vs. MAE) and its implications for foundation model design.",
+        description: "Designed and implemented a RETFound-DETR pipeline for retinal micro-lesion detection, specifically targeting microaneurysms (MA), the earliest lesion in Diabetic Retinopathy. Built on RETFound, a ViT-Large masked autoencoder pretrained on 1.6M unlabelled fundus and OCT images using self-supervised learning (MAE), the pipeline adapts the frozen foundation backbone to a DETR-based detection head for bounding box prediction at 512×512 resolution. Worked with three datasets: MAPLES (built on MESSIDOR, adds segmentation and MA labels), IDRiD (54 train / 27 test images with segmentation), and a Shrouk MA patch dataset. Developed understanding of dataset hierarchy, MESSIDOR provides DR grading labels, MAPLES adds fine-grained segmentation. Started with a clean MA vs. Non-MA binary classification phase (patch-level) using RETFound features as the foundation, then progressed toward multi-class bounding-box detection. Debugged DETR training issues including matcher instability, foreground score thresholding, and slow F1 convergence in early epochs. Also studied the RETFound-DINOv2 variant (contrastive SSL pretraining vs. MAE) and its implications for foundation model design.",
         tags: ["PyTorch", "RETFound (ViT-L)", "DETR", "MAPLES/MESSIDOR", "IDRiD", "Kaggle T4 GPU", "MMDetection"],
         badge: "Research / Ongoing",
         highlights: ["1.6M Pretrained MAE", "ViT-Large Backbone"],
@@ -53,7 +53,7 @@ const projects = [
     {
         title: "Comparative Study of Detection and Segmentation Architectures for Oral Cancer Lesion Analysis",
         tagline: "Evaluating Mask R-CNN, UNet++, and RTMDet for oral cancer detection and segmentation.",
-        description: "Conducted a research-level comparative study of computer vision architectures for oral cancer detection and segmentation. Evaluated three families of models: (1) Mask R-CNN with a ConvNeXt backbone (instance segmentation approach), (2) UNet++ (semantic segmentation approach), and (3) RTMDet with a DINOv3-pretrained ConvNeXt backbone (object detection approach). Investigated the fundamental differences between detection-first and segmentation-first paradigms for medical lesion analysis, including tradeoffs in annotation cost, model complexity, and clinical utility. This work contributed to framing the correct task formulation for oral lesion analysis — whether to localize first (detect bounding boxes) or directly segment lesion boundaries — with implications for downstream clinical deployment.",
+        description: "Conducted a research-level comparative study of computer vision architectures for oral cancer detection and segmentation. Evaluated three families of models: (1) Mask R-CNN with a ConvNeXt backbone (instance segmentation approach), (2) UNet++ (semantic segmentation approach), and (3) RTMDet with a DINOv3-pretrained ConvNeXt backbone (object detection approach). Investigated the fundamental differences between detection-first and segmentation-first paradigms for medical lesion analysis, including tradeoffs in annotation cost, model complexity, and clinical utility. This work contributed to framing the correct task formulation for oral lesion analysis, specifically whether to localize first (detect bounding boxes) or directly segment lesion boundaries, with implications for downstream clinical deployment.",
         tags: ["PyTorch", "MMDetection", "Mask R-CNN", "ConvNeXt", "UNet++", "RTMDet", "DINOv3", "Medical Imaging"],
         badge: "Research / Ongoing",
         highlights: ["Comparative Study", "Oral Cancer Lesions"],
@@ -260,16 +260,7 @@ export default function Projects() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="modal-overlay"
-                        style={{
-                            position: "fixed",
-                            inset: 0,
-                            zIndex: 9999,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            padding: "1rem",
-                        }}
+                        className="modal-overlay fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-4"
                         onClick={() => setSelected(null)}
                     >
                         <motion.div
@@ -277,74 +268,39 @@ export default function Projects() {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 30 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="glass-card"
-                            style={{
-                                maxWidth: 520,
-                                width: "100%",
-                                padding: "2rem",
-                                position: "relative",
-                                maxHeight: "85vh",
-                                overflowY: "auto",
-                                border: "1px solid rgba(99,102,241,0.25)",
-                            }}
+                            className="glass-card w-full max-w-[520px] p-5 md:p-8 relative max-h-[88vh] md:max-h-[85vh] overflow-y-auto border border-indigo-500/25"
                         >
                             <button
                                 onClick={() => setSelected(null)}
-                                style={{
-                                    position: "absolute",
-                                    top: 16,
-                                    right: 16,
-                                    padding: 8,
-                                    borderRadius: 8,
-                                    background: "rgba(255,255,255,0.05)",
-                                    border: "none",
-                                    cursor: "pointer",
-                                    color: "#9ca3af",
-                                }}
+                                className="absolute top-3 right-3 md:top-4 md:right-4 p-2 rounded-lg bg-white/5 border-none cursor-pointer text-gray-400 hover:text-white"
                             >
                                 <X size={18} />
                             </button>
 
                             {projects[selected].badge && (
                                 <span
-                                    style={{
-                                        display: "inline-block",
-                                        marginBottom: "1rem",
-                                        fontSize: "0.75rem",
-                                        fontWeight: 600,
-                                        padding: "4px 12px",
-                                        borderRadius: 9999,
-                                        background: "rgba(99,102,241,0.15)",
-                                        border: "1px solid rgba(99,102,241,0.25)",
-                                        color: "#a5b4fc",
-                                    }}
+                                    className="inline-block mb-3 md:mb-4 text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/25 text-indigo-300"
                                 >
                                     {projects[selected].badge}
                                 </span>
                             )}
 
-                            <h3 style={{ fontWeight: 700, fontSize: "1.25rem", color: "white", marginBottom: projects[selected].tagline ? "0.25rem" : "1.25rem", paddingRight: "2rem" }}>
+                            <h3 className="font-bold text-lg md:text-xl text-white pr-8 mb-1 leading-snug">
                                 {projects[selected].title}
                             </h3>
 
                             {projects[selected].tagline && (
-                                <p style={{ fontSize: "0.85rem", color: "#a5b4fc", marginBottom: "1.25rem", fontWeight: 500, lineHeight: 1.4 }}>
+                                <p className="text-xs md:text-sm text-indigo-300/90 mb-4 font-medium leading-relaxed">
                                     {projects[selected].tagline}
                                 </p>
                             )}
 
-                            <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
+                            <div className="flex gap-2 flex-wrap mb-4">
                                 {projects[selected].highlights.map((h, i) => (
                                     <span
                                         key={i}
-                                        style={{
-                                            padding: "5px 14px",
-                                            borderRadius: 8,
-                                            background: projects[selected].gradient,
-                                            color: "white",
-                                            fontSize: "0.82rem",
-                                            fontWeight: 700,
-                                        }}
+                                        className="px-3 py-1 rounded-lg text-[0.72rem] font-bold text-white"
+                                        style={{ background: projects[selected].gradient }}
                                     >
                                         {h}
                                     </span>
@@ -352,21 +308,21 @@ export default function Projects() {
                             </div>
 
                             {projects[selected].description ? (
-                                <p style={{ color: "#d1d5db", fontSize: "0.92rem", lineHeight: 1.65, marginBottom: "1.5rem", textAlign: "justify" }}>
+                                <p className="text-gray-300 text-xs md:text-sm leading-relaxed md:leading-loose mb-5 text-justify">
                                     {projects[selected].description}
                                 </p>
                             ) : (
-                                <ul style={{ listStyle: "none", paddingLeft: 0, marginBottom: "1.25rem" }}>
+                                <ul className="list-none pl-0 mb-4">
                                     {projects[selected].details?.map((detail, i) => (
-                                        <li key={i} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.45rem" }}>
-                                            <span style={{ color: projects[selected].dotColor, marginTop: 2, flexShrink: 0 }}>•</span>
-                                            <span style={{ color: "#d1d5db", fontSize: "0.9rem", lineHeight: 1.6 }}>{detail}</span>
+                                        <li key={i} className="flex gap-2 mb-2">
+                                            <span style={{ color: projects[selected].dotColor }} className="flex-shrink-0 mt-0.5">•</span>
+                                            <span className="text-gray-300 text-xs md:text-sm leading-relaxed">{detail}</span>
                                         </li>
                                     ))}
                                 </ul>
                             )}
 
-                            <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
+                            <div className="flex gap-2 flex-wrap mb-6">
                                 {projects[selected].tags.map((t, i) => (
                                     <span key={i} className="skill-badge">{t}</span>
                                 ))}
@@ -377,8 +333,7 @@ export default function Projects() {
                                     href={projects[selected].link || "https://github.com/devadripta"}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="grow flex items-center justify-center gap-2 padding-large rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
-                                    style={{ padding: "12px" }}
+                                    className="grow flex items-center justify-center gap-2 p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
                                 >
                                     {projects[selected].link ? "View Paper" : "View Code"}
                                 </a>

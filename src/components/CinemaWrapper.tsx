@@ -32,32 +32,32 @@ export default function CinemaWrapper({ children, zIndex, isLast = false }: Cine
     // Slightly scale down as the section exits.
     const scale = useTransform(
         scrollYProgress,
-        [0, 0.55, 1],
+        [0, 0.92, 1],
         [1, 1, isLast ? 1 : 0.965]
     );
 
     const contentOpacity = useTransform(
         scrollYProgress,
-        [0, 0.55, 0.9, 1],
+        [0, 0.92, 0.98, 1],
         [1, 1, isLast ? 1 : 0.5, isLast ? 1 : 0.25]
     );
 
     const translateY = useTransform(
         scrollYProgress,
-        [0, 0.55, 1],
+        [0, 0.92, 1],
         [0, 0, isLast ? 0 : -28]
     );
 
     const blur = useTransform(
         scrollYProgress,
-        [0, 0.55, 1],
+        [0, 0.92, 1],
         [0, 0, isLast ? 0 : 10]
     );
 
-    // Dark overlay fades in from 55% onwards for a smoother cinematic fade.
+    // Dark overlay fades in from 88% onwards for a smoother cinematic fade.
     const overlayOpacity = useTransform(
         scrollYProgress,
-        [0.52, 0.9],
+        [0.88, 0.98],
         [0, isLast ? 0 : 0.72]
     );
 

@@ -60,7 +60,7 @@ export default function Hero() {
                         <Typewriter
                             options={{
                                 strings: [
-                                    "Applied ML Researcher",
+                                    "Applied AI Researcher",
                                     "Research Fellow @ BITS Pilani",
                                 ],
                                 autoStart: true,

@@ -71,6 +71,9 @@ export default function About() {
                             <span className="text-purple-400 font-semibold">biomedical signal processing</span>, and{" "}
                             <span className="text-indigo-400 font-semibold">computer vision.</span>
                         </p>
+                        <p className="text-gray-300 text-lg leading-relaxed mb-5">
+                            Driven by curiosity, I love to explore interesting things, innovate, and add to knowledge for the future of human kind.
+                        </p>
                         <p className="text-gray-400 text-base leading-relaxed">
                             I&apos;ve interned at{" "}
                             <span className="text-gray-200 font-medium">IISER Kolkata</span>,{" "}

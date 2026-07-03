@@ -72,7 +72,7 @@ export default function About() {
                         <p className="text-gray-300 text-lg leading-relaxed mb-5">
                             I love to explore interesting things, innovate, and contribute to knowledge for the future of humankind. We can talk about barmy things to invent, build, engineer. Not limited to but we can also talk about literature, philosophy, economics, sociology, geopolitics, et cetera :)
                         </p>
-                        <p className="text-gray-400 text-base leading-relaxed">
+                        <p className="text-gray-300 text-lg leading-relaxed">
                             I&apos;ve previously interned at{" "}
                             <span className="text-gray-200 font-medium">IISER Kolkata</span>,{" "}
                             <span className="text-gray-200 font-medium">Defence Institute of Advanced Technology (DIAT-DRDO)</span>, and{" "}

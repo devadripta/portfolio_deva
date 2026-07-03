@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/shared";
-import { GraduationCap, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const education = [
     {
@@ -11,6 +12,7 @@ const education = [
         duration: "Dec 2025 – Present",
         location: "Goa, India",
         gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
+        logo: "/BITS_Pilani-Logo.jpg",
         bullets: [
             "Working on an industry-sponsored ML project for end-to-end automotive lifecycle and safety systems.",
             "Developing and evaluating ML models and pipelines for real-world, large-scale data.",
@@ -22,6 +24,7 @@ const education = [
         duration: "Dec 2021 – May 2025",
         location: "Pune, India",
         gradient: "linear-gradient(135deg, #a855f7, #ec4899)",
+        logo: "/SPPU-Logo.jpg",
         bullets: [
             "Core coursework in electronics, signal processing, embedded systems, and computing.",
             "Active in campus tech communities and collaborative research projects.",
@@ -79,13 +82,24 @@ export default function Education() {
                                 <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginTop: "0.5rem" }}>
                                     <div
                                         style={{
-                                            padding: 12,
+                                            padding: 8,
                                             borderRadius: 12,
-                                            background: edu.gradient,
+                                            background: "white",
                                             flexShrink: 0,
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            width: 48,
+                                            height: 48,
                                         }}
                                     >
-                                        <GraduationCap size={24} color="white" />
+                                        <Image
+                                            src={edu.logo}
+                                            alt={edu.institution}
+                                            width={40}
+                                            height={40}
+                                            style={{ objectFit: "contain" }}
+                                        />
                                     </div>
                                     <div>
                                         <h3 style={{ fontWeight: 700, fontSize: "1rem", color: "white", lineHeight: 1.4 }}>{edu.degree}</h3>
